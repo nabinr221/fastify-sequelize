@@ -5,6 +5,11 @@ const userModel = (sequelize) => {
     "User",
     {
       // Model attributes are defined here
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -32,7 +37,7 @@ const userModel = (sequelize) => {
         // allowNull defaults to true
       },
       contact_number: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT(11),
         // allowNull defaults to true
       },
     },
@@ -44,6 +49,5 @@ const userModel = (sequelize) => {
       updatedAt: false, // "updateTimestamp", // I want updatedAt to actually be called updateTimestamp
     }
   );
-  return User;
 };
 module.exports = userModel;
