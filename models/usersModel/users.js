@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-
 const userModel = (sequelize) => {
   return sequelize.define(
     "User",
@@ -12,13 +11,14 @@ const userModel = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
 
       username: {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
+        
         // allowNull defaults to true
       },
       password: {
@@ -37,7 +37,7 @@ const userModel = (sequelize) => {
         // allowNull defaults to true
       },
       contact_number: {
-        type: DataTypes.BIGINT(11),
+        type: DataTypes.BIGINT,
         // allowNull defaults to true
       },
     },

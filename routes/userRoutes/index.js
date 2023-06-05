@@ -30,13 +30,13 @@ const addUserOpts = {
 };
 
 const updateUserOpts = {
-  schema: updateUserSchema, // will be created in schemas/posts.js
-  handler: updateUserHandler, // will be created in handlers/posts.js
+  schema: updateUserSchema, // will be created in schemas/user.js
+  handler: updateUserHandler, // will be created in handlers/user.js
 };
 
 const deleteUserOpts = {
-  schema: deleteUserSchema, // will be created in schemas/posts.js
-  handler: deleteUsertHandler, // will be created in handlers/posts.js
+  schema: deleteUserSchema, // will be created in schemas/user.js
+  handler: deleteUsertHandler, // will be created in handlers/user.js
 };
 
 const usersRoutes = async (fastify, opts, done) => {

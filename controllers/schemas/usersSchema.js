@@ -32,7 +32,9 @@ const addUserSchema = {
     },
   },
   response: {
-    200: typeString, // sending a simple message as string
+    200: {
+      msg: typeString,
+    }, // sending a simple message as string
   },
 };
 
@@ -71,7 +73,9 @@ const updateUserSchema = {
     id: { type: "number" }, // converts the id param to number
   },
   response: {
-    200: user,
+    200: {
+      message: typeString,
+    },
   },
 };
 
@@ -83,7 +87,9 @@ const deleteUserSchema = {
     id: { type: "number" }, // converts the id param to number
   },
   response: {
-    200: typeString,
+    200: {
+      msg: typeString,
+    },
   },
 };
 module.exports = {
