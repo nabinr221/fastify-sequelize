@@ -26,10 +26,8 @@ const postModel = (sequelize) => {
     {
       tableName: "posts",
       timestamps: true, // don't forget to enable timestamps!
-      createdAt: false, // I don't want createdAt
-      updatedAt: false,
     }
   );
 };
 
-module.exports = postModel;
+    module.exports = postModel;

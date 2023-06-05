@@ -1,31 +1,32 @@
 const fastifyPlugin = require("fastify-plugin");
 const { Sequelize } = require("sequelize");
 const userModel = require("../../models/usersModel/users");
-const postModel = require("../../models/usersModel/post");
+const sessionModel = require("../../models/sessionModel/session");
 
-const databaseConnection = async (fastify, options) => {
+const databaseConnection = async (fastify, options, done) => {
   try {
     const sequelize = new Sequelize("spotify", "postgres", "admin", {
       host: "localhost",
       dialect: "postgres",
     });
+
     await sequelize.authenticate();
     console.log("Database connection has been established successfully.");
 
-    const Post = postModel(sequelize);
     const User = userModel(sequelize);
+    const Session = sessionModel(sequelize);
 
-    User.hasMany(Post, { foreignKey: "userId" });
-    Post.belongsTo(User, { foreignKey: "userId" });
-
-    fastify.decorate("Post", Post);
     fastify.decorate("User", User);
+    fastify.decorate("Session", Session);
 
-    await Post.sync({ force: true });
-    await User.sync({ force: true });
+    await User.sync({ force: false });
+    await Session.sync({ force: false });
+    fastify.decorate("sequelize", sequelize);
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
+
+  done();
 };
 
 module.exports = fastifyPlugin(databaseConnection);
